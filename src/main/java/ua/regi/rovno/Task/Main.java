@@ -11,6 +11,7 @@ import ua.regi.rovno.Task.lsystem.rules.ReplaceRule;
 import ua.regi.rovno.Task.lsystem.rules.Rule;
 
 import java.nio.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.PI;
@@ -55,7 +56,7 @@ public class Main {
         ruleset[2] = new ReplaceRule('$', "$");
         LSystem system = new LSystem("S$", ruleset);
 
-        turtle = new Turtle(system, new CommandFlyweight(), new PVector(-0, - 0));
+        turtle = new Turtle(system, new CommandFlyweight(), new PVector(-0, -0));
     }
 
 
@@ -138,8 +139,8 @@ public class Main {
         // Set the clear color
         glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
-        List<PVector[]> lines = turtle.draw(2);
-        List<PVector[]> cantorLines = turtle2.draw(10);
+        List<PVector[]> lines = turtle.draw(5);
+//        List<PVector[]> cantorLines = turtle2.draw(10);
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
@@ -150,11 +151,47 @@ public class Main {
             glMatrixMode(GL_PROJECTION);
             glLoadIdentity();
             glOrtho(-600, 600, -300, 300, 0, 1);
+
+
+            glBegin(GL_LINES);
+
+            glColor3f(1, 0, 1);
+
+            glVertex2d(-600, 0);
+            glVertex2d(600, 0);
+
+            glVertex2d(0, -300);
+            glVertex2d(0, 300);
+
+            glEnd();
             glColor3f(0, 0, 0);
 
+//            lines = new ArrayList<>();
+//            PVector[] arr = new PVector[2];
+//
+//            lines.add(arr);
+//
+//            arr[0] = new PVector(0, 0);
+//            arr[1] = new PVector(0, 20);
+//
+//            PVector[] arr1 = new PVector[2];
+//            arr1[0] = new PVector(0, 20);
+//
+//            float rad = (float) ((PI / 180) * -45);
+//
+//            System.out.println(sin(rad));
+//            System.out.println(cos(rad));
+//
+//            float x2 = (float) (0 * cos(rad) - 40 * sin(rad));
+//            float y2 = (float) (0 * sin(rad) + 40 * cos(rad));
+//
+//            arr1[1] = new PVector(x2, y2).multiply(1);
+//
+//            lines.add(arr1);
+
             renderLines(lines);
-            renderLines(cantorLines);
-            drawCircle(-300, 100, 50);
+            //renderLines(cantorLines);
+            //drawCircle(-300, 100, 50);
 
             // Swap buffers and look for events
             glfwSwapBuffers(window);

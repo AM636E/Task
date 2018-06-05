@@ -41,7 +41,6 @@ public class Turtle {
                 }
                 prevCoords = currentCoords;
                 currentCoords = nextCoords;
-
             }
         }
 

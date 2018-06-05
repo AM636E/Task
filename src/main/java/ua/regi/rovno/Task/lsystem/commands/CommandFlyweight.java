@@ -7,7 +7,7 @@ import java.util.Stack;
 public class CommandFlyweight extends AbstractInterpteter {
     private static Stack<PVector> LocationCache = new Stack<>();
 
-    float len = 20;
+    float len = 5;
 
     public Command createCommand(char ch) {
         Command command = null;
@@ -20,11 +20,11 @@ public class CommandFlyweight extends AbstractInterpteter {
                 command = new TranslateCommand(true, len);
                 break;
             case '+': {
-                command = new RotateCommand(1);
+                command = new RotateCommand(-1);
                 break;
             }
             case '-': {
-                command = new RotateCommand(-1);
+                command = new RotateCommand(1);
                 break;
             }
             case '[' : {
@@ -36,7 +36,7 @@ public class CommandFlyweight extends AbstractInterpteter {
                 break;
             }
             default:
-                len *= 0.6;
+                //len *= 0.5;
                 command = new LineCommand(true, 0);
         }
 

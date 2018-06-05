@@ -12,7 +12,7 @@ public class LSystem {
     }
 
     public String nextGeneration() {
-     //   return "F+-";
+       // return "F+";
         StringBuilder builder = new StringBuilder();
 
         for(int i = 0; i < this.start.length(); i ++) {

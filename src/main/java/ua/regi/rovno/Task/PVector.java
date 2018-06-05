@@ -30,4 +30,8 @@ public class PVector {
     public String toString() {
         return "(" + x + ";" + y + ")";
     }
+
+    public PVector multiply(float a){
+        return new PVector(x * a, y * a);
+    }
 }
